@@ -44,6 +44,7 @@ $dates = [
 ];
 $chiavi_dates = array_keys($dates);
 // var_dump($chiavi_dates);
+echo "<h3>Versione in php</h3>";
 
 for ($i = 0; $i < count($chiavi_dates); $i++) {
     $chiavi = $chiavi_dates[$i];
@@ -74,14 +75,14 @@ for ($i = 0; $i < count($chiavi_dates); $i++) {
 
 <body>
     <h3>Versione con html innestato</h3>
-    <?php
-    for ($i = 0; $i < count($chiavi_dates); $i++) {
-        $chiavi = $chiavi_dates[$i];
-        $posts = $dates[$chiavi];
+    <div>
+        <?php
+        for ($i = 0; $i < count($chiavi_dates); $i++) {
+            $chiavi = $chiavi_dates[$i];
+            $posts = $dates[$chiavi];
+        ?>
 
-    ?>
-        <div>
-            <h4><?php echo $chiavi ?></h4>
+            <h3><?php echo $chiavi ?></h3>
             <ul>
                 <?php
                 for ($j = 0; $j < count($posts); $j++) {
@@ -92,16 +93,15 @@ for ($i = 0; $i < count($chiavi_dates); $i++) {
                     $text = $chiavi_posts["text"];
                 ?>
                     <li><?php echo "$titolo - $author - $text" ?></li>
-
                 <?php
                 }
                 ?>
-            </ul>
-        </div>
-    <?php
-    }
-    ?>
 
+            </ul>
+    </div>
+<?php
+        }
+?>
 
 </body>
 
