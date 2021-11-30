@@ -2,9 +2,8 @@
     DD-MM-YYYY es 01-01-2007 e come valore un array di post associati a quella data. 
 Stampare ogni data con i relativi post. -->
 
-
 <?php
-$posts = [
+$dates = [
 
     '10-01-2019' => [
         [
@@ -43,11 +42,67 @@ $posts = [
         ]
     ],
 ];
-$date = array_keys($posts);
-var_dump($date);
-$prova = "";
-for ($i = 0; $i < count($date); $i++) {
-    $prova = array_keys($date);
-}
+$chiavi_dates = array_keys($dates);
+// var_dump($chiavi_dates);
 
+for ($i = 0; $i < count($chiavi_dates); $i++) {
+    $chiavi = $chiavi_dates[$i];
+    $posts = $dates[$chiavi];
+    echo "<h4>$chiavi</h4>";
+    for ($j = 0; $j < count($posts); $j++) {
+        $chiavi_posts = $posts[$j];
+        // var_dump($chiavi_posts);
+        $titolo = $chiavi_posts["title"];
+        $author = $chiavi_posts["author"];
+        $text = $chiavi_posts["text"];
+        echo "<ul>
+            <li>$author - $titolo - $text</li>
+            </ul>";
+    }
+}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack 2</title>
+</head>
+
+<body>
+    <h3>Versione con html innestato</h3>
+    <?php
+    for ($i = 0; $i < count($chiavi_dates); $i++) {
+        $chiavi = $chiavi_dates[$i];
+        $posts = $dates[$chiavi];
+
+    ?>
+        <div>
+            <h4><?php echo $chiavi ?></h4>
+            <ul>
+                <?php
+                for ($j = 0; $j < count($posts); $j++) {
+                    $chiavi_posts = $posts[$j];
+                    // var_dump($chiavi_posts);
+                    $titolo = $chiavi_posts["title"];
+                    $author = $chiavi_posts["author"];
+                    $text = $chiavi_posts["text"];
+                ?>
+                    <li><?php echo "$titolo - $author - $text" ?></li>
+
+                <?php
+                }
+                ?>
+            </ul>
+        </div>
+    <?php
+    }
+    ?>
+
+
+</body>
+
+</html>

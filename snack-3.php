@@ -10,16 +10,14 @@
 // var_dump($contenitore)
 
 $contenitore = [];
-for ($i = 0; $i < 15; $i++) {
-    $contenitore[$i] = rand(1, 16);
-    // echo $contenitore[$i];
-    $control = array_unique($contenitore);
-
-    $confronto = array_diff_key($contenitore, $control);
+while (count($contenitore) < 15) {
+    $random = rand(1, 20);
+    if (!in_array($random, $contenitore)) {
+        $contenitore[] = $random;
+    }
 }
-var_dump($control);
+
 var_dump($contenitore);
-var_dump($confronto);
 
 
 ?>
